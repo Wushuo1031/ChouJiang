@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:wb="http://open.weibo.com/wb">
+  <head>
+    <meta charset="UTF-8" />
+    <title>幸运抽组</title>
+    <meta name="keywords" content="幸运抽组" />
+    <meta name="description" content="幸运抽组" />
+    <link rel="stylesheet" href="https://www.diefishfish.com/default.css" />
+    <script type="text/javascript">
+      var _vds = _vds || []
+      window._vds = _vds
+      ;(function () {
+        _vds.push(['setAccountId', 'a1b1ffe6bcd33190'])
+        ;(function () {
+          var vds = document.createElement('script')
+          vds.type = 'text/javascript'
+          vds.async = true
+          vds.src =
+            ('https:' == document.location.protocol ? 'https://' : 'http://') +
+            'dn-growing.qbox.me/vds.js'
+          var s = document.getElementsByTagName('script')[0]
+          s.parentNode.insertBefore(vds, s)
+        })()
+      })()
+    </script>
+  </head>
+
+  <body>
+    <div id="wrapper">
+      <h1>
+        &nbsp;幸运抽组！
+        <br />
+        <br />
+        <b style="color: #ff9733" id="what"></b>
+      </h1>
+      <input type="button" value="开始" id="start" />
+      <input type="button" value="开始" id="stop" style="display: none" />
+    </div>
+
+    <textarea rows="9" cols="53" id="list" style="display: none">
+第1组 第2组 第3组 第4组 第5组 第6组 第7组 第8组 第9组 第10组 第11组 第12组 第13组 第14组 第15组</textarea
+    >
+
+    <div id="weibo">
+      <wb:follow-button
+        uid="1650984392"
+        type="gray_1"
+        width="67"
+        height="24"
+      ></wb:follow-button>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-1.6.4.min.js"></script>
+    <script>
+    $(function(){var run=0,heading=$("h1"),timer;$("#start").click(function(){var list=$("#list").val().replace(/ +/g," ").replace(/^ | $/g,"").split(" ");if(!run){heading.html(heading.html().replace("吃这个！","吃什么？"));$(this).val("停止");timer=setInterval(function(){var r=Math.ceil(Math.random()*list.length),food=list[r-1];$("#what").html(food);var rTop=Math.ceil(Math.random()*$(document).height()),rLeft=Math.ceil(Math.random()*($(document).width()-50)),rSize=Math.ceil(Math.random()*(37-14)+14);$("<span class='temp'></span>").html(food).hide().css({top:rTop,left:rLeft,color:"rgba(0,0,0,."+Math.random()+")",fontSize:rSize+"px",}).appendTo("body").fadeIn("slow",function(){$(this).fadeOut("slow",function(){$(this).remove()})})},50);run=1}else{heading.html(heading.html().replace("吃什么？","吃这个！"));$(this).val("不行，换一个");clearInterval(timer);run=0}});document.onkeydown=function enter(e){var e=e||event;if(e.keyCode==13){$("#start").trigger("click")}}});
+    </script>
+    <script>
+      $i = 0
+      $('#start').click(function () {
+        $i++
+        if ($i >= 60) {
+          $('#start').hide()
+          $('#stop').show()
+        }
+      })
+      $('#stop').click(function () {
+        alert('这么作？法人组上！')
+        $(this).hide()
+      })
+    </script>
+  </body>
+</html>
